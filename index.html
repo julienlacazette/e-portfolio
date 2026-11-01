@@ -117,6 +117,9 @@ figure{margin:0;background:var(--surface);border:1px solid var(--line);border-ra
 figure:first-child{grid-column:1/-1}
 figure svg{display:block;width:100%;height:auto}
 figcaption{font-size:.85rem;color:var(--muted);padding:8px 4px 2px}
+.conteneur-images {display: flex; gap: 20px; align-items: center}
+.conteneur-images img {max-width: 50%; height: auto}
+  
 /* cv */
 .cvbox{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:6px 10px 10px 6px;padding:32px;max-width:860px}
 .cvp[hidden]{display:none}
@@ -200,9 +203,11 @@ figure img{display:block;width:100%;height:auto;border-radius:6px;background:#ff
         <li><b>Domaine</b> Vision par ordinateur</li>
       </ul>
     </div>
-    <div class="figs">
+    <div class="conteneur-images">
       <figure><img src ="images\yolo-principe.jpg.png" alt="Principe de YOLO">
       <figure><img src ="images\perroquets-resultats.jpg.png" alt="Résultats obtenus après applications de différentes méthodes de vision par ordinateur">
+    </div>
+    <div class="figs">
       <figure><img src ="images\matrices-confusion.png.png" alt="Matrices de confusions correspondantes aux méthodes ci-dessus">
   </div>
 </section>
@@ -236,8 +241,6 @@ figure img{display:block;width:100%;height:auto;border-radius:6px;background:#ff
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <h2>Travaillons ensemble</h2>
-    <p class="lead">Je réponds en général sous 48 heures.</p>
     <div class="btns">
       <a class="btn p" href="mailto:julien.lacazette@etu.toulouse-inp.fr">julien.lacazette@etu.toulouse-inp.fr</a>
       <a class="btn s" href="https://www.linkedin.com/in/julien-lacazette-986a55350/" rel="noopener">LinkedIn</a>

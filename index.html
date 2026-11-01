@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Julien Lacazette – E-portfolio · Ingénieur en sciences du numérique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --paper:#eef1f6; --surface:#ffffff; --ink:#14213d; --muted:#55627c;
+  --line:#cfd6e4; --accent:#2f5bff; --accent-ink:#ffffff; --signal:#c77700;
+  --dot:#c3cbdc;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f1626; --surface:#17203a; --ink:#e8ecf6; --muted:#9aa7c4;
+    --line:#2a3658; --accent:#7f9bff; --accent-ink:#0f1626; --signal:#ffb84d;
+    --dot:#222d4b; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f1626; --surface:#17203a; --ink:#e8ecf6; --muted:#9aa7c4;
+  --line:#2a3658; --accent:#7f9bff; --accent-ink:#0f1626; --signal:#ffb84d;
+  --dot:#222d4b; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:12px}
+.lead{color:var(--muted);max-width:60ch;margin:0 0 36px}
+
+/* nav */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:10}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;height:56px;overflow-x:auto}
+nav .brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;margin-right:auto;white-space:nowrap;text-decoration:none}
+nav a.l{color:var(--muted);text-decoration:none;font-size:.95rem;white-space:nowrap}
+nav a.l:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer}
+
+/* hero */
+.hero{padding:88px 0 72px;background-image:radial-gradient(var(--dot) 1.2px,transparent 1.2px);background-size:22px 22px}
+.hero h1{font-size:clamp(3rem,10vw,6.6rem);font-weight:800;letter-spacing:-.03em}
+.hero .role{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(1.15rem,2.6vw,1.6rem);font-weight:500;color:var(--muted);margin:18px 0 28px}
+.hero p{max-width:56ch;margin:0 0 32px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.p{background:var(--accent);color:var(--accent-ink)}
+.btn.s{color:var(--ink);border-color:var(--line);background:var(--surface)}
+.btn:hover{border-color:var(--ink)}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+.facts b{color:var(--ink);font-weight:600}
+
+/* à propos */
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
+.about p{margin:0 0 16px}
+.about dl{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 24px}
+.about dt{font-weight:600;font-size:.9rem;color:var(--muted)}
+.about dd{margin:0 0 14px}
+.about dd:last-child{margin:0}
+
+/* compétences */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.sk{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px}
+.sk h3{font-size:1.15rem;margin-bottom:14px}
+.sk ul{list-style:none;margin:0;padding:0}
+.sk li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 0;border-top:1px solid var(--line);font-size:.97rem}
+.sk li:first-child{border-top:0}
+.lvl{display:flex;gap:3px}
+.lvl i{width:14px;height:6px;border-radius:2px;background:var(--line)}
+.lvl i.on{background:var(--accent)}
+
+/* projets */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.chip{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font:inherit;font-size:.92rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.pj{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:6px 10px 10px 6px;padding:22px;display:flex;flex-direction:column;gap:10px}
+.pj[data-d="Data & IA"]{border-left-color:var(--signal)}
+.pj[data-d="Cybersécurité"]{border-left-color:#c2410c}
+.pj[data-d="Systèmes"]{border-left-color:#0f8f6f}
+.pj .meta{font-size:.85rem;color:var(--muted)}
+.pj h3{font-size:1.25rem}
+.pj p{margin:0;font-size:.97rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.tags span{font-size:.8rem;padding:2px 9px;border-radius:5px;background:var(--paper);border:1px solid var(--line);color:var(--muted)}
+.pj a{font-weight:600;font-size:.95rem}
+
+/* parcours */
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.tl li{position:relative;padding:0 0 30px 22px}
+.tl li::before{content:"";position:absolute;left:-30px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--accent)}
+.tl .when{font-size:.88rem;color:var(--muted)}
+.tl h3{font-size:1.15rem;margin:2px 0 4px}
+.tl p{margin:0;color:var(--muted);max-width:62ch}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper)}
+.contact h2{color:var(--paper)}
+.contact .lead{color:var(--paper);opacity:.8}
+.contact .btn.p{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.contact .btn.s{background:transparent;color:var(--paper);border-color:rgba(255,255,255,.4)}
+footer{padding:24px 0;color:var(--muted);font-size:.88rem}
+
+@media (max-width:760px){
+  section{padding:52px 0}
+  .about{grid-template-columns:1fr;gap:28px}
+  .hero{padding:56px 0 48px}
+}
+
+/* stage */
+.stage{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:start}
+.stage p{margin:0 0 16px}
+.facts2{list-style:none;margin:24px 0 0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.facts2 li{padding:10px 18px;border-top:1px solid var(--line);font-size:.95rem}
+.facts2 li:first-child{border-top:0}
+.facts2 b{display:inline-block;min-width:5.5em;color:var(--muted);font-weight:600}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px}
+figure:first-child{grid-column:1/-1}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-size:.85rem;color:var(--muted);padding:8px 4px 2px}
+/* cv */
+.cvbox{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:6px 10px 10px 6px;padding:32px;max-width:860px}
+.cvp[hidden]{display:none}
+.cvp h3{font-size:2rem}
+.cvp header p{margin:10px 0 0;max-width:68ch}
+.cvp .ct{color:var(--muted);font-size:.92rem}
+.cvp h4{font-family:"Bricolage Grotesque",sans-serif;font-size:1.1rem;margin:26px 0 8px;color:var(--accent)}
+.cvp p{margin:0 0 12px}
+.cols{display:grid;grid-template-columns:1.3fr 1fr;gap:32px}
+.job{margin-bottom:16px}
+.job span{display:block;color:var(--muted);font-size:.93rem}
+.job ul{margin:6px 0 0;padding-left:20px;color:var(--muted)}
+@media (max-width:760px){.stage,.cols{grid-template-columns:1fr}.figs{grid-template-columns:1fr}.cvbox{padding:22px}}
+.facts2{margin-top:0}
+.figs{margin-top:40px}
+.figs figure:first-child{grid-column:auto}
+.figs figure:last-child{grid-column:1/-1}
+figure img{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
+</style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="wrap">
+    <a class="brand" href="#accueil">J. Lacazette</a>
+    <a class="l" href="#apropos">À propos</a>
+    <a class="l" href="#stage">Stage IRIT</a>
+    <a class="l" href="#cv">CV</a>
+    <a class="l" href="#parcours">Parcours</a>
+    <a class="l" href="#contact">Contact</a>
+    <button id="theme" type="button" aria-label="Changer de thème">Thème</button>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <div class="wrap">
+    <h1>Julien<br>Lacazette</h1>
+    <div class="role">Élève-ingénieur en sciences du numérique, 1<sup>ère</sup> année</div>
+    <p>Passionné de nouvelles technologies, je souhaite découvrir les métiers de la recherche informatique. Je cherche un stage du 07/06/2027 au 30/08/2027 pour explorer concrètement ces domaines.</p>
+    <div class="btns">
+      <a class="btn p" href="#stage">Mon stage à l’IRIT</a>
+      <a class="btn s" href="#cv">Voir mon CV</a>
+      <a class="btn s" href="#contact">Me contacter</a>
+    </div>
+    <div class="facts">
+      <span><b>École</b> ENSEEIHT (École Nationale Supérieur d'Électrotechnique d'Électronique d'Informatique d'Hydraulique et des Télécommunications)</span>
+      <span><b>Langues</b> Français (natif), anglais (C1), espagnol (A2)</span>
+    </div>
+  </div>
+</header>
+
+<section id="apropos">
+  <div class="wrap about">
+    <div>
+      <h2>À propos</h2>
+      <p>Je me suis tourné vers le numérique par curiosité pour la façon dont les logiciels transforment des problèmes concrets en solutions utilisables. Depuis, j’alterne entre théorie (algorithmique, probabilités, architecture des systèmes) et pratique (projets d’équipe, stage de recherche).</p>
+      <p>J’aime les projets où il faut comprendre un besoin, choisir une architecture, puis livrer quelque chose qui tourne vraiment, avec des tests et une documentation.</p>
+      <p>Hors cours, j’ai été vice-président du BDE de ma prépa et je suis animateur en colonie de vacances depuis 2023.</p>
+    </div>
+    <dl>
+      <dt>Domaines de prédilection</dt><dd>Vision par ordinateur, apprentissage automatique, recherche informatique</dd>
+      <dt>Méthodes</dt><dd>Démarche de recherche, Python, travail en équipe</dd>
+      <dt>Mobilité</dt><dd>Toulouse, permis B</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="stage">
+  <div class="wrap">
+    <h2>Stage à l’IRIT : vision par ordinateur</h2>
+    <p class="lead">Six semaines à l’Institut de Recherche en Informatique de Toulouse, en mai-juin 2026, sur la détection d’objets dans des images.</p>
+    <div class="stage">
+      <div class="txt">
+        <p>J’ai mené un projet de recherche personnel en suivant la démarche d’un chercheur : poser une question, lire ce qui existe, tester, puis analyser ce qui fonctionne et ce qui échoue.</p>
+        <p>J’ai utilisé <b>Python</b> et <b>YOLO</b>, une famille de modèles qui repère plusieurs objets dans une image en une seule passe. J’ai comparé trois approches (classification, détection d’objets et segmentation) sur des images de perroquets, et regardé leurs erreurs avec des matrices de confusion.</p>
+      </div>
+      <ul class="facts2">
+        <li><b>Lieu</b> IRIT, Toulouse</li>
+        <li><b>Durée</b> 6 semaines</li>
+        <li><b>Outils</b> Python, YOLO</li>
+        <li><b>Domaine</b> Vision par ordinateur</li>
+      </ul>
+    </div>
+    <div class="figs">
+      <figure><img src ="G:\Mon Drive\Cours\N7\1A\CAM\yolo-principe.jpg.png">
+      <figure><img src ="G:\Mon Drive\Cours\N7\1A\CAM\perroquets-resultats.jpg.png">
+      <figure><img src ="G:\Mon Drive\Cours\N7\1A\CAM\matrices-confusion.png.png">
+  </div>
+</section>
+
+<section id="cv">
+  <div class="wrap">
+    <h2>CV</h2>
+    <p class="lead">Mon CV en deux langues. Choisissez la version.</p>
+    <div class="chips" role="group" aria-label="Langue du CV"><button class="chip" type="button" aria-pressed="true" data-l="fr">Français</button><button class="chip" type="button" aria-pressed="false" data-l="en">English</button></div>
+    <div class="cvbox"><div class="cvp" id="cv-fr" lang="fr">
+<header><h3>Julien Lacazette</h3><p>Étudiant en première année à l’ENSEEIHT, filière Sciences du Numérique. Passionné de nouvelles technologies et désireux de découvrir les métiers de la recherche informatique, je cherche un stage du 07/06/2027 au 30/08/2027 afin d’explorer concrètement ces domaines.</p><p class="ct">julien.lacazette@etu.toulouse-inp.fr · Toulouse · Permis B</p></header>
+<div class="cols"><div><h4>Formation</h4>
+<p><b>ENSEEIHT</b><br>1ère année, filière Sciences du Numérique</p>
+<p><b>Prépa Toulouse Transition, 2024-2026</b><br>Classe préparatoire aux écoles d’ingénieurs</p>
+<p><b>Lycée Saint Cricq, Pau, 2021-2024</b><br>Baccalauréat général</p>
+<p><b>BAFA, 2024</b><br>Finalisation de la formation BAFA</p></div>
+<div><h4>Langues</h4><p>Français : langue natale<br>Anglais : C1<br>Espagnol : A2</p>
+<h4>Qualités</h4><p>Optimisme, patience, curiosité</p><h4>Centres d’intérêt</h4><p>Randonnée, musique, saxophone</p></div></div>
+<h4>Expérience</h4>
+<div class="job"><b>Stage à l’IRIT</b><span>6 semaines dans la recherche et la vision par ordinateur</span><ul><li>Projet de recherche personnel dans la démarche d’un chercheur</li><li>Utilisation de Python et de YOLO</li></ul></div>
+<div class="job"><b>Vice-président du BDE, 2024-2025</b><span>BDE Prépa des INP</span><ul><li>Organisation d’évènements étudiants (soirées, weekends, gala)</li><li>Gestion d’une équipe et communication auprès des étudiants</li></ul></div>
+<div class="job"><b>Animateur en colonie, 2023, 2024, 2025, 2026</b><span>La Colo de Béost (64)</span><ul><li>Accompagnement à la vie quotidienne d’enfants de 7 à 14 ans</li><li>Encadrement de sorties en montagne avec camping en autonomie sur plusieurs jours</li><li>Travail en équipe dans la préparation d’animations</li></ul></div>
+</div><div class="cvp" id="cv-en" lang="en" hidden>
+<header><h3>Julien Lacazette</h3><p>First-year student at ENSEEIHT, Digital Sciences track. Passionate about new technologies and eager to discover careers in computer science research, I am looking for an internship from 07/06/2027 to 30/08/2027 to explore these fields first-hand.</p><p class="ct">julien.lacazette@etu.toulouse-inp.fr · Toulouse, France · Driving licence (B)</p></header>
+<div class="cols"><div><h4>Education</h4>
+<p><b>ENSEEIHT</b><br>1st year, Digital Sciences track</p>
+<p><b>Prépa Toulouse Transition, 2024-2026</b><br>Preparatory classes for engineering schools</p>
+<p><b>Lycée Saint Cricq, Pau, 2021-2024</b><br>French general baccalaureate</p>
+<p><b>BAFA, 2024</b><br>Completed the BAFA youth-leader certification</p></div>
+<div><h4>Languages</h4><p>French: native<br>English: C1<br>Spanish: A2</p>
+<h4>Strengths</h4><p>Optimism, patience, curiosity</p><h4>Interests</h4><p>Hiking, music, saxophone</p></div></div>
+<h4>Experience</h4>
+<div class="job"><b>Internship at IRIT</b><span>6 weeks in research and computer vision</span><ul><li>Personal research project, following a researcher’s approach</li><li>Used Python and YOLO</li></ul></div>
+<div class="job"><b>Vice President of the student union (BDE), 2024-2025</b><span>BDE Prépa des INP</span><ul><li>Organised student events (parties, weekends, gala)</li><li>Managed a team and communicated with students</li></ul></div>
+<div class="job"><b>Summer camp counsellor, 2023, 2024, 2025, 2026</b><span>La Colo de Béost (64)</span><ul><li>Looked after the daily life of children aged 7 to 14</li><li>Led mountain outings with self-sufficient camping over several days</li><li>Worked in a team to prepare activities</li></ul></div>
+</div></div>
+  </div>
+</section>
+
+<section id="parcours" style="background:var(--surface);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2>Parcours</h2>
+    <p class="lead">Formation, stages et engagements, du plus récent au plus ancien.</p>
+    <ol class="tl">
+      <li><div class="when">Sept. 2026 – aujourd’hui</div><h3>Cycle ingénieur, 1<sup>ère</sup> année · parcours Sciences du Numériques</h3><p>Filière Sciences du Numérique à l’ENSEEIHT, Toulouse INP.</p></li>
+      <li><div class="when">Mai – juin 2026</div><h3>Stage dans un laboratoire de recherche en informatique - IRIT</h3><p>Six semaines de recherche en vision par ordinateur, avec Python et des modèles comme YOLO ou SAM.</p></li>
+      <li><div class="when">Oct. 2024 – oct. 2025</div><h3>Vice-Président du BDE de la Prépa T²</h3><p>Organisation d’évènements étudiants (soirées, weekends, intégration, ...).</p></li>
+      <li><div class="when">Sept. 2024 – juin 2026</div><h3>Prépa Toulouse Transition</h3><p>Mathématiques, physique, chimie, algorithmique et programmation Python.</p></li>
+      <li><div class="when">2024</div><h3>Baccalauréat général, mention très bien</h3><p>Spécialités mathématiques et physique-chimie.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Travaillons ensemble</h2>
+    <p class="lead">Je réponds en général sous 48 heures.</p>
+    <div class="btns">
+      <a class="btn p" href="mailto:julien.lacazette@etu.toulouse-inp.fr">julien.lacazette@etu.toulouse-inp.fr</a>
+      <a class="btn s" href="https://www.linkedin.com/in/julien-lacazette-986a55350/" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 Julien Lacazette</div></footer>
+
+<script>
+/* CV : bascule FR / EN */
+const cvBtns=document.querySelectorAll("#cv .chip");
+cvBtns.forEach(b=>b.addEventListener("click",()=>{
+  cvBtns.forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+  document.getElementById("cv-fr").hidden=b.dataset.l!=="fr";
+  document.getElementById("cv-en").hidden=b.dataset.l!=="en";
+}));
+
+/* thème */
+const root=document.documentElement;
+document.getElementById("theme").addEventListener("click",()=>{
+  const dark=getComputedStyle(root).colorScheme==="dark";
+  root.setAttribute("data-theme",dark?"light":"dark");
+});
+</script>
+</body>
+</html>
